@@ -9,13 +9,16 @@ enum algorithm {
 struct sorting_t {
     void (*print)(int* a);
     int* (*sort)(int a[], enum algorithm algo);
+    size_t length;
     enum algorithm algo;
 };
+
+struct sorting_t Sort;
 
 int* selection_sort(int a[])
 {
     int key = 0, j = 0;
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < (int)Sort.length; i++) {
 	key = a[i];
 	j = i - 1;
 	while (j >= 0 && a[j] > key) {
@@ -55,15 +58,15 @@ int* sort_fn(int a[], enum algorithm algo)
 void print_fn(int* a)
 {
     printf("%d", a[0]);
-    for (int i = 1; i < 6; ++i) {
+    for (int i = 1; i < (int)Sort.length; ++i) {
 	printf(", %d", *(a + i));
     }
     printf("\n");
 }
 
-struct sorting_t Sort = {
-    .print = print_fn,
-    .sort = sort_fn
-};
-
+void init_sort()
+{
+    Sort.print = print_fn;
+    Sort.sort = sort_fn;
+}
 #endif /* ifndef SORTING */
