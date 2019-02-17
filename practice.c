@@ -1,4 +1,4 @@
-#include "include/sorting.h"
+#include "include/sort/sorting.h"
 #include <stdio.h>
 #include <string.h>
 

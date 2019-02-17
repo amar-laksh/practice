@@ -1,9 +1,13 @@
 #ifndef SORTING
 #define SORTING 1
+#include "algorithms.h"
 #include <stdio.h>
 enum algorithm {
     SELECTION,
     INSERTION,
+    QUICK,
+    BUBBLE,
+    HEAP,
     MERGE
 };
 struct sorting_t {
@@ -15,40 +19,21 @@ struct sorting_t {
 
 struct sorting_t Sort;
 
-int* selection_sort(int a[])
-{
-    int key = 0, j = 0;
-    for (int i = 0; i < (int)Sort.length; i++) {
-	key = a[i];
-	j = i - 1;
-	while (j >= 0 && a[j] > key) {
-	    a[j + 1] = a[j];
-	    j -= 1;
-	}
-	a[j + 1] = key;
-    }
-    return a;
-}
-
-int* insertion_sort(int a[])
-{
-    return a;
-}
-
-int* merge_sort(int a[])
-{
-    return a;
-}
-
 int* sort_fn(int a[], enum algorithm algo)
 {
     switch (algo) {
     case SELECTION:
-	return selection_sort(a);
+	return selection_sort(a, Sort.length);
     case INSERTION:
-	return insertion_sort(a);
+	return insertion_sort(a, Sort.length);
     case MERGE:
-	return merge_sort(a);
+	return merge_sort(a, Sort.length);
+    case QUICK:
+	return quick_sort(a, Sort.length);
+    case BUBBLE:
+	return bubble_sort(a, Sort.length);
+    case HEAP:
+	return heap_sort(a, Sort.length);
     default:
 	printf("Sorry please choose from the available algorithms\n");
     }
