@@ -28,5 +28,17 @@ int main(int argc, char** argv)
     printf("MERGE sort array: ");
     memcpy(tmp, arr, sizeof(arr));
     Sort.print(Sort.sort(tmp, MERGE));
+
+    printf("QUICK sort array: ");
+    memcpy(tmp, arr, sizeof(arr));
+    Sort.print(Sort.sort(tmp, QUICK));
+
+    printf("HEAP sort array: ");
+    memcpy(tmp, arr, sizeof(arr));
+    Sort.print(Sort.sort(tmp, HEAP));
+
+    printf("BUBBLE sort array: ");
+    memcpy(tmp, arr, sizeof(arr));
+    Sort.print(Sort.sort(tmp, BUBBLE));
     return 0;
 }

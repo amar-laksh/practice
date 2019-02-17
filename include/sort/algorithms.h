@@ -1,7 +1,15 @@
 #ifndef ALGORITHMS
 #define ALGORITHMS 1
 
-int* insertion_sort(int a[], int len)
+void __swap(int* a, int* b)
+{
+
+    int* t = 0;
+    t = a;
+    a = b;
+    b = t;
+}
+void insertion_sort(int a[], int len)
 {
     int key = 0, j = 0;
     for (int i = 0; i < len; i++) {
@@ -13,10 +21,9 @@ int* insertion_sort(int a[], int len)
 	}
 	a[j + 1] = key;
     }
-    return a;
 }
 
-int* selection_sort(int a[], int len)
+void selection_sort(int a[], int len)
 {
     int index = 0, s = 0;
     for (int i = 0; i < len; i++) {
@@ -31,30 +38,65 @@ int* selection_sort(int a[], int len)
 	a[index] = a[i];
 	a[i] = s;
     }
-    return a;
 }
 
-int* merge_sort(int a[], int len)
+void __merge(int a[], int l, int m, int r)
 {
-    return a;
 }
 
-int* quick_sort(int a[], int len)
+void __merge_rec(int a[], int l, int r)
 {
-    int index = 0, pivot = 0;
-    for (int i = 0; i < len; i++) {
+    if (l < r) {
+	int m = (l + r) / 2;
+	__merge_rec(a, l, m);
+	__merge_rec(a, m + 1, r);
+	__merge(a, l, m, r);
     }
-    return a;
 }
 
-int* bubble_sort(int a[], int len)
+void merge_sort(int a[], int len)
 {
-    return a;
+    __merge_rec(a, 0, len - 1);
 }
 
-int* heap_sort(int a[], int len)
+int partition(int a[], int low, int high)
 {
-    return a;
+    int pivot = a[high];
+    int i = low - 1;
+    int t = 0;
+    for (int j = low; j <= high - 1; j++) {
+	if (a[j] <= pivot) {
+	    i += 1;
+	    t = a[i];
+	    a[i] = a[j];
+	    a[j] = t;
+	}
+    }
+    t = a[i + 1];
+    a[i + 1] = a[high];
+    a[high] = t;
+    return (i + 1);
+}
+
+void _quick_rec(int a[], int low, int high)
+{
+    if (low < high) {
+	int pi = partition(a, low, high);
+	_quick_rec(a, low, pi - 1);
+	_quick_rec(a, pi + 1, high);
+    }
+}
+void quick_sort(int a[], int len)
+{
+    _quick_rec(a, 0, len - 1);
+}
+
+void bubble_sort(int a[], int len)
+{
+}
+
+void heap_sort(int a[], int len)
+{
 }
 
 #endif /* ifndef ALGORITHMS */

@@ -23,21 +23,27 @@ int* sort_fn(int a[], enum algorithm algo)
 {
     switch (algo) {
     case SELECTION:
-	return selection_sort(a, Sort.length);
+	selection_sort(a, Sort.length);
+	break;
     case INSERTION:
-	return insertion_sort(a, Sort.length);
+	insertion_sort(a, Sort.length);
+	break;
     case MERGE:
-	return merge_sort(a, Sort.length);
+	merge_sort(a, Sort.length);
+	break;
     case QUICK:
-	return quick_sort(a, Sort.length);
+	quick_sort(a, Sort.length);
+	break;
     case BUBBLE:
-	return bubble_sort(a, Sort.length);
+	bubble_sort(a, Sort.length);
+	break;
     case HEAP:
-	return heap_sort(a, Sort.length);
+	heap_sort(a, Sort.length);
+	break;
     default:
 	printf("Sorry please choose from the available algorithms\n");
     }
-    return 0;
+    return a;
 }
 
 void print_fn(int* a)
