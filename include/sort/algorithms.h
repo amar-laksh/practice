@@ -1,14 +1,6 @@
 #ifndef ALGORITHMS
 #define ALGORITHMS 1
 
-void __swap(int* a, int* b)
-{
-
-    int* t = 0;
-    t = a;
-    a = b;
-    b = t;
-}
 void insertion_sort(int a[], int len)
 {
     int key = 0, j = 0;
@@ -81,9 +73,9 @@ int partition(int a[], int low, int high)
 void _quick_rec(int a[], int low, int high)
 {
     if (low < high) {
-	int pi = partition(a, low, high);
-	_quick_rec(a, low, pi - 1);
-	_quick_rec(a, pi + 1, high);
+	int pivot = partition(a, low, high);
+	_quick_rec(a, low, pivot - 1);
+	_quick_rec(a, pivot + 1, high);
     }
 }
 void quick_sort(int a[], int len)
