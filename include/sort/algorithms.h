@@ -34,6 +34,39 @@ void selection_sort(int a[], int len)
 
 void __merge(int a[], int l, int m, int r)
 {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    int L[n1], R[n2];
+    for (int i = 0; i < n1; ++i) {
+	L[i] = a[l + i];
+    }
+
+    for (int i = 0; i < n2; ++i) {
+	R[i] = a[m + 1 + i];
+    }
+
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+	if (L[i] <= R[j]) {
+	    a[k] = L[i];
+	    i++;
+	} else {
+	    a[k] = R[j];
+	    j++;
+	}
+	k++;
+    }
+    while (i < n1) {
+	a[k] = L[i];
+	i++;
+	k++;
+    }
+    while (i < n1) {
+	a[k] = L[i];
+	i++;
+	k++;
+    }
 }
 
 void __merge_rec(int a[], int l, int r)
@@ -54,28 +87,28 @@ void merge_sort(int a[], int len)
 int partition(int a[], int low, int high)
 {
     int pivot = a[high];
-    int i = low - 1;
+    int i = low;
     int t = 0;
     for (int j = low; j <= high - 1; j++) {
 	if (a[j] <= pivot) {
-	    i += 1;
 	    t = a[i];
 	    a[i] = a[j];
 	    a[j] = t;
+	    i += 1;
 	}
     }
-    t = a[i + 1];
-    a[i + 1] = a[high];
+    t = a[i];
+    a[i] = a[high];
     a[high] = t;
-    return (i + 1);
+    return i;
 }
 
 void _quick_rec(int a[], int low, int high)
 {
     if (low < high) {
-	int pivot = partition(a, low, high);
-	_quick_rec(a, low, pivot - 1);
-	_quick_rec(a, pivot + 1, high);
+	int pi = partition(a, low, high);
+	_quick_rec(a, low, pi - 1);
+	_quick_rec(a, pi + 1, high);
     }
 }
 void quick_sort(int a[], int len)
@@ -85,6 +118,16 @@ void quick_sort(int a[], int len)
 
 void bubble_sort(int a[], int len)
 {
+    int t = 0;
+    for (int i = 0; i < len - 1; i++) {
+	for (int j = 0; j < len - i - 1; j++) {
+	    if (a[j + 1] <= a[j]) {
+		t = a[j + 1];
+		a[j + 1] = a[j];
+		a[j] = t;
+	    }
+	}
+    }
 }
 
 void heap_sort(int a[], int len)
