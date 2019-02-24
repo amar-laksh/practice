@@ -40,17 +40,6 @@ void heapify(int a[], int n, int i, int flag)
     }
 }
 
-void make_max_heap(int a[], int n)
-{
-    for (int i = n / 2 - 1; i >= 0; i--)
-	heapify(a, n, i, 1);
-}
-
-void make_min_heap(int a[], int n)
-{
-    for (int i = n / 2 - 1; i >= 0; i--)
-	heapify(a, n, i, 0);
-}
 void push_heap(int a[], int f, int l)
 {
 }

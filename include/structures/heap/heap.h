@@ -20,10 +20,14 @@ int* heap_fn(int a[], enum heap_algorithm algo)
 {
     switch (algo) {
     case MAX_HEAP:
-	make_max_heap(a, Heap.length);
+	for (int i = (int)Heap.length / 2 - 1; i >= 0; i--) {
+	    heapify(a, (int)Heap.length, i, 1);
+	}
 	break;
     case MIN_HEAP:
-	make_min_heap(a, Heap.length);
+	for (int i = (int)Heap.length / 2 - 1; i >= 0; i--) {
+	    heapify(a, (int)Heap.length, i, 0);
+	}
 	break;
     default:
 	printf("Sorry please choose from the available algorithms\n");
