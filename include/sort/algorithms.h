@@ -1,6 +1,6 @@
 #ifndef ALGORITHMS
 #define ALGORITHMS 1
-
+#include "include/structures/heap/algorithms.h"
 void insertion_sort(int a[], int len)
 {
     int key = 0, j = 0;
@@ -132,6 +132,15 @@ void bubble_sort(int a[], int len)
 
 void heap_sort(int a[], int len)
 {
+
+    for (int i = len / 2 - 1; i >= 0; i--)
+	heapify(a, len, i, 1);
+    for (int i = len - 1; i >= 0; i--) {
+	int t = a[i];
+	a[i] = a[0];
+	a[0] = t;
+	heapify(a, i, 0, 1);
+    }
 }
 
 #endif /* ifndef ALGORITHMS */
