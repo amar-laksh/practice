@@ -1,3 +1,4 @@
+#include "include/search/searching.h"
 #include "include/sort/sorting.h"
 #include "include/structures/heap/heap.h"
 #include <stdio.h>
@@ -11,8 +12,11 @@ int main(int argc, char** argv)
 	printf("%s takes no arguments.\n", argv[0]);
 	return 1;
     }
+
     int arr[] = { 52, 5, 2, 4, 6, 41, 1, 3, 12 };
     int tmp[9];
+
+    // SORTING PRACTICE
     init_sort();
     Sort.length = 9;
     printf("--------------\nPractice tests:\n");
@@ -43,6 +47,8 @@ int main(int argc, char** argv)
     memcpy(tmp, arr, sizeof(arr));
     Sort.print(Sort.sort(tmp, BUBBLE));
 
+    // HEAP PRACTICE
+
     printf("\n\n\n");
     init_heap();
     Heap.length = 9;
@@ -52,5 +58,18 @@ int main(int argc, char** argv)
     Heap.print(Heap.create_heap(arr, MAX_HEAP));
     printf("MIN Heap:\n");
     Heap.print(Heap.create_heap(arr, MIN_HEAP));
+
+    // SEARCHING PRACTICE
+    printf("\n\n\n");
+    printf("Original array: ");
+    Sort.print(arr);
+    printf("\n");
+    init_search();
+    int el = 41;
+    Search.length = 9;
+    Search.print(Search.search(arr, el, LINEAR));
+    Search.print(Search.search(arr, el, BINARY));
+    Search.print(Search.search(arr, el, INTERPOLATION));
+    Search.print(Search.search(arr, el, FIBONACCI));
     return 0;
 }

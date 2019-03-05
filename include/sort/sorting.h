@@ -46,7 +46,7 @@ int* sort_fn(int a[], enum algorithm algo)
     return a;
 }
 
-void print_fn(int* a)
+void sort_print_fn(int* a)
 {
     printf("%d", a[0]);
     for (int i = 1; i < (int)Sort.length; ++i) {
@@ -57,7 +57,7 @@ void print_fn(int* a)
 
 void init_sort()
 {
-    Sort.print = print_fn;
+    Sort.print = sort_print_fn;
     Sort.sort = sort_fn;
 }
 #endif /* ifndef SORTING */
