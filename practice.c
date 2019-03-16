@@ -67,9 +67,14 @@ int main(int argc, char** argv)
     init_search();
     int el = 41;
     Search.length = 9;
+    Search.array = arr;
+    printf("Linear search:\n");
     Search.print(Search.search(arr, el, LINEAR));
+    printf("Binary search:\n");
     Search.print(Search.search(arr, el, BINARY));
+    printf("Interpolation search:\n");
     Search.print(Search.search(arr, el, INTERPOLATION));
+    printf("Fibonacci search:\n");
     Search.print(Search.search(arr, el, FIBONACCI));
     return 0;
 }

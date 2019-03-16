@@ -1,5 +1,5 @@
-#ifndef ALGORITHMS
-#define ALGORITHMS 1
+#ifndef SORT_ALGORITHMS
+#define SORT_ALGORITHMS 1
 #include "include/structures/heap/algorithms.h"
 void insertion_sort(int a[], int len)
 {

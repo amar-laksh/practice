@@ -10,37 +10,39 @@ enum search_algorithm {
 };
 struct searching_t {
     void (*print)(int* a);
-    int* (*search)(int a[], int el, enum search_algorithm algo);
+    int* array;
+    int (*search)(int a[], int el, enum search_algorithm algo);
     size_t length;
     enum search_algorithm algo;
 };
 
 struct searching_t Search;
 
-int* search_fn(int a[], int el, enum search_algorithm algo)
+int search_fn(int a[], int el, enum search_algorithm algo)
 {
+    int i;
     switch (algo) {
     case LINEAR:
-	selection_sort(a, Search.length);
+	i = linear_search(a, el, Search.length);
 	break;
     case BINARY:
-	insertion_sort(a, Search.length);
+	i = binary_search(a, el, Search.length);
 	break;
     case INTERPOLATION:
-	merge_sort(a, Search.length);
+	i = interpolation_search(a, el, Search.length);
 	break;
     case FIBONACCI:
-	quick_sort(a, Search.length);
+	i = fibonacci_search(a, el, Search.length);
 	break;
     default:
 	printf("Sorry please choose from the available search algorithms\n");
     }
-    return a;
+    return i;
 }
 
-void search_print_fn(int* a, int index)
+void search_print_fn(int index)
 {
-    printf("Ihe search element: %d, and it's index is: %d\n", a[index], index);
+    printf("The search element: %d, and it's index is: %d\n", Search.array[index], index);
 }
 
 void init_search()
